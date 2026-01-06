@@ -1,0 +1,40 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Photo Memories</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="{% static 'albums/css/styles.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Photo Memories</h1>
+  </header>
+
+  <main class="container">
+    <div class="albums-grid">
+      {% for album in albums %}
+      <div class="album" data-album="{{ album.id }}">
+        <button class="album-tile" aria-expanded="false">
+          <img class="cover" src="{{ album.cover }}" alt="{{ album.title }}">
+          <div class="title">{{ album.title }}</div>
+        </button>
+
+        <div class="photo-strip" aria-hidden="true">
+          <div class="photos">
+            {% for p in album.photos %}
+            <div class="photo">
+              <img src="{{ p }}" alt="photo">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+
+  <script src="{% static 'albums/js/main.js' %}"></script>
+</body>
+</html>
