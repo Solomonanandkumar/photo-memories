@@ -4,7 +4,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "dev-secret-key-for-local"
 DEBUG = True
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["54.197.154.20", "127.0.0.1", "localhost"]
 
 INSTALLED_APPS = [
     "django.contrib.staticfiles",
