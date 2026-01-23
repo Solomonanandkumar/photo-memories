@@ -12,8 +12,11 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.common.CommonMiddleware",
 ]
+
 
 ROOT_URLCONF = "photomemories.urls"
 
@@ -33,6 +36,10 @@ DATABASES = {
 }
 
 STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 STATICFILES_DIRS = [ BASE_DIR / "albums" / "static" ]
 
 LANGUAGE_CODE = "en-us"
