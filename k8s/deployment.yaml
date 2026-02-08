@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: photo-memories
+  namespace: photomemories
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: photo-memories
+  template:
+    metadata:
+      labels:
+        app: photo-memories
+    spec:
+      containers:
+      - name: photo-memories
+        image: solomonak/photo-memories:1.1
+        ports:
+        - containerPort: 8000
+        env:
+        - name: ALLOWED_HOSTS
+          value: "*"

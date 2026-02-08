@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: photo-memories-ingress
+  namespace: photomemories
+spec:
+  rules:
+  - host: photomemories.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: photo-memories-service
+            port:
+              number: 80

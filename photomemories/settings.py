@@ -4,7 +4,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "dev-secret-key-for-local"
 DEBUG = True
-ALLOWED_HOSTS = ["54.197.154.20", "127.0.0.1", "localhost"]
+import os
+
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",")
+
 
 INSTALLED_APPS = [
     "django.contrib.staticfiles",
