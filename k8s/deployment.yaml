@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: photo-memories
+  name: photo-memories-deployment
   namespace: photomemories
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: photo-memories
@@ -15,9 +15,10 @@ spec:
     spec:
       containers:
       - name: photo-memories
-        image: solomonak/photo-memories:1.1
+        image: solomonak/photo-memories:1.2
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
         env:
-        - name: ALLOWED_HOSTS
+        - name: DJANGO_ALLOWED_HOSTS
           value: "*"
